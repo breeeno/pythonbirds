@@ -51,7 +51,7 @@ class Fase():
 
         :param porcos:
         """
-        self._obstaculos.extend(porcos)
+        self._porcos.extend(porcos)
 
     def adicionar_passaro(self, *passaros):
         """
@@ -73,7 +73,7 @@ class Fase():
 
         :return:
         """
-        if not self._possui_porco_ativos():
+        if not self._possui_porcos_ativos():
             return VITORIA
         elif self._possui_passaros_ativos():
             return EM_ANDAMENTO
@@ -110,15 +110,15 @@ class Fase():
     def _transformar_em_ponto(self, ator):
         return Ponto(ator.x, ator.y, ator.caracter())
 
-    def _possui_porco_ativos(self):
-        for porco in self._porcos:
-            if porco.status == ATIVO:
-             return True
-        return False
-
     def _possui_passaros_ativos(self):
         for passaro in self._passaros:
             if passaro.status == ATIVO:
+             return True
+        return False
+
+    def _possui_porcos_ativos(self):
+        for porco in self._porcos:
+            if porco.status == ATIVO:
              return True
         return False
 
